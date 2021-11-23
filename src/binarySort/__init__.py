@@ -1,3 +1,5 @@
+from util import binary_search
+
 def binary_sort(arr: 'list', reverse: bool=False):
     ret = [arr[0]] if arr else arr
 
@@ -10,22 +12,3 @@ def binary_sort(arr: 'list', reverse: bool=False):
     if reverse:
         ret.reverse()
     return ret
-
-def binary_search(arr: 'list', element: int, end: int, start: int = 0):
-    if end <= start:
-        return start + 1 if element > arr[start] else start
-    
-    mid = (end + start) // 2
-
-    if (element == arr[mid]):
-        return mid + 1
-
-    if (element > arr[mid]):
-        return binary_search(
-            arr, element,
-            start=mid + 1, end=end
-        )
-    return binary_search(
-        arr, element,
-        start=start, end=mid - 1
-    )

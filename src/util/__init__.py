@@ -33,3 +33,22 @@ def get_high_low(arr):
             highPos = i
     
     return {'high': high, 'low': low, 'highPos': highPos, 'lowPos': lowPos}
+
+def binary_search(arr: 'list', element: int, end: int, start: int = 0):
+    if end <= start:
+        return start + 1 if element > arr[start] else start
+    
+    mid = (end + start) // 2
+
+    if (element == arr[mid]):
+        return mid + 1
+
+    if (element > arr[mid]):
+        return binary_search(
+            arr, element,
+            start=mid + 1, end=end
+        )
+    return binary_search(
+        arr, element,
+        start=start, end=mid - 1
+    )
